@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Endy keyboard (Command = Ctrl)
+Exec=sh -c "sleep 2; setxkbmap -option altwin:ctrl_win"
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true

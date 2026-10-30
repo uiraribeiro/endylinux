@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Face Unlock
+Name[pt_BR]=Reconhecimento facial
+Comment=Entrar na tela de login com o rosto
+Exec=xfce4-terminal --title="Reconhecimento facial" -e "endy-face setup"
+Icon=camera-web
+Terminal=false
+Categories=System;Security;

@@ -1,0 +1,37 @@
+# Desktop
+xorg xfce4 xfce4-session xfwm4 xfdesktop4 xfce4-settings xfce4-panel xfce4-appfinder
+xfce4-taskmanager xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin xfce4-power-manager xfce4-power-manager-plugins xfce4-notifyd
+xfce4-screenshooter xfce4-terminal thunar thunar-volman gvfs-backends tumbler ristretto mousepad atril
+lightdm lightdm-gtk-greeter plank rofi network-manager-gnome blueman
+fonts-inter fonts-noto-color-emoji gtk2-engines-murrine sassc libglib2.0-dev-bin
+# Apps
+firefox-esr
+mpv gparted gnome-disk-utility file-roller
+# Audio / BT
+pipewire pipewire-pulse wireplumber pipewire-alsa pavucontrol bluez
+# Hardware / power
+xserver-xorg-video-nouveau xserver-xorg-input-libinput libgl1-mesa-dri mesa-vulkan-drivers
+firmware-b43-installer b43-fwcutter firmware-linux-free firmware-misc-nonfree
+tlp mbpfan zram-tools thermald
+# Installer
+calamares calamares-settings-debian squashfs-tools rsync dosfstools parted e2fsprogs gdisk efibootmgr grub-efi-amd64 grub-pc-bin
+# Misc
+user-setup nodejs npm sudo chrony libxml2-utils curl git wget imagemagick plymouth plymouth-themes
+# Store + mail
+gnome-software gnome-software-plugin-flatpak flatpak geary
+# pt-BR
+locales firefox-esr-l10n-pt-br hunspell-pt-br
+# Media + codecs
+vlc gstreamer1.0-libav gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-pipewire
+# Calendar, contacts, calculator, notes
+gnome-calendar gnome-contacts gnome-calculator gnote
+# Backup
+timeshift
+# Printing
+cups system-config-printer cups-pk-helper printer-driver-gutenprint printer-driver-hpcups printer-driver-brlaser printer-driver-splix
+# Face unlock (login screen only)
+python3-opencv python3-numpy libpam-python policykit-1 v4l-utils
+# Wi-Fi: NetworkManager only *recommends* it; without it every Wi-Fi device shows "unavailable"
+wpasupplicant
+# Command-key shortcuts (Mac style)
+xdotool wmctrl x11-utils x11-xkb-utils x11-xserver-utils

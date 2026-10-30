@@ -1,0 +1,13 @@
+#!/bin/bash
+# Cmd+Q: gracefully close every window of the active app (like macOS), never the desktop/panel/dock.
+win=$(xdotool getactivewindow 2>/dev/null) || exit 0
+[ -n "$win" ] || exit 0
+types=$(xprop -id "$win" _NET_WM_WINDOW_TYPE 2>/dev/null)
+case "$types" in *DESKTOP*|*DOCK*) exit 0;; esac
+pid=$(xdotool getwindowpid "$win" 2>/dev/null)
+case "$(cat /proc/"$pid"/comm 2>/dev/null)" in xfdesktop|xfce4-panel|plank) exit 0;; esac
+if [ -n "$pid" ]; then
+  wmctrl -lp | awk -v p="$pid" '$3 == p {print $1}' | while read -r id; do wmctrl -ic "$id"; done
+else
+  wmctrl -ic "$win"
+fi

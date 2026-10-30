@@ -1,0 +1,10 @@
+#!/bin/bash
+# Endy: AI agent that runs terminal tasks on request. Cloud model (this hardware can't run a local LLM).
+# First run installs Claude Code to ~/.local (needs internet) and asks you to log in / set ANTHROPIC_API_KEY.
+set -e
+export PATH="$HOME/.local/bin:$PATH"
+if ! command -v claude >/dev/null; then
+  echo "Primeira execução: instalando o agente (precisa de internet)..."
+  npm install -g --prefix "$HOME/.local" @anthropic-ai/claude-code
+fi
+exec claude --mcp-config /etc/endy/mcp.json "$@"

@@ -1,0 +1,14 @@
+#!/bin/sh
+# Applies the Endy wallpaper to every connected output, whatever its name
+IMG=/usr/share/backgrounds/macbookos.png
+sleep 2
+set_img() {
+  xfconf-query -c xfce4-desktop -p "$1/last-image" -n -t string -s "$IMG"
+  xfconf-query -c xfce4-desktop -p "$1/image-style" -n -t int -s 5
+}
+for out in $(xrandr 2>/dev/null | awk '/ connected/{print $1}'); do
+  set_img "/backdrop/screen0/monitor$out/workspace0"
+done
+for p in $(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep '/last-image$'); do
+  xfconf-query -c xfce4-desktop -p "$p" -s "$IMG"
+done

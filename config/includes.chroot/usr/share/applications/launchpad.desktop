@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Launchpad
+Exec=/usr/local/bin/endy-launchpad
+Icon=view-app-grid
+Terminal=false
+Categories=Utility;
+NoDisplay=true

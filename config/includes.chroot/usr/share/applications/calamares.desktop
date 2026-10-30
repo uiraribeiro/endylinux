@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Instalar Endy Linux
+Exec=/usr/local/bin/endy-install
+Icon=calamares
+Terminal=false
+Categories=System;

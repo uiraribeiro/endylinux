@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Spotlight
+Exec=rofi -show drun
+Icon=system-search

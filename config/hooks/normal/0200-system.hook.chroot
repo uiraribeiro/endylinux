@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+systemctl enable fstrim.timer tlp.service mbpfan.service lightdm.service NetworkManager.service bluetooth.service zramswap.service || true
+systemctl enable chrony.service || true
+systemctl disable systemd-timesyncd.service 2>/dev/null || true
+systemctl set-default graphical.target
+# Dock/rofi/greeter wallpaper path for lightdm
+update-alternatives --set x-cursor-theme /usr/share/icons/WhiteSur-cursors/cursor.theme 2>/dev/null || true
+# Spotlight launcher uses the installer .desktop
+update-desktop-database || true
+# Fallback: the Xfce default wallpaper (any monitor name) is replaced by ours
+for f in /usr/share/backgrounds/xfce/*; do [ -f "$f" ] && cp /usr/share/backgrounds/macbookos.png "$f"; done || true
+# Flathub (system-wide) so GNOME Software has a store out of the box
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
+# GNOME Software background service eats RAM on a 4 GB machine; it still opens on demand
+rm -f /etc/xdg/autostart/gnome-software-service.desktop
+# Locales: pt-BR default (chosen at boot via locales=), en_US kept as fallback
+sed -i 's/^# *\(pt_BR.UTF-8\|en_US.UTF-8\) UTF-8/\1 UTF-8/' /etc/locale.gen
+locale-gen
+systemctl enable cups.service || true
+# Launchpad/Spotlight: hide technical and duplicate entries
+for n in display-im6.q16 install-debian plank thunar-bulk-rename vim xfce4-about xfce4-file-manager \
+         xfce4-mail-reader xfce4-run xfce4-session-logout xfce4-terminal-emulator xfce4-web-browser \
+         xfce4-appfinder libreoffice-startcenter; do
+  f="/usr/share/applications/$n.desktop"
+  [ -f "$f" ] || continue
+  if grep -q '^NoDisplay=' "$f"; then sed -i 's/^NoDisplay=.*/NoDisplay=true/' "$f"; else sed -i '/^\[Desktop Entry\]/a NoDisplay=true' "$f"; fi
+done
+# RAM: stop background helpers from autostarting (they still work when opened on demand)
+rm -f /etc/xdg/autostart/org.gnome.Software.desktop \
+      /etc/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop \
+      /etc/xdg/autostart/print-applet.desktop \
+      /etc/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+# Wi-Fi/network panel: visible and named plainly (the tray applet is not obvious to new users)
+f=/usr/share/applications/nm-connection-editor.desktop
+if [ -f "$f" ]; then
+  sed -i '/^NoDisplay=/d' "$f"
+  sed -i 's/^Name=.*/Name=Wi-Fi e Rede/; s/^Name\[pt_BR\]=.*/Name[pt_BR]=Wi-Fi e Rede/' "$f"
+  grep -q '^Name\[pt_BR\]=' "$f" || sed -i '/^Name=/a Name[pt_BR]=Wi-Fi e Rede' "$f"
+fi

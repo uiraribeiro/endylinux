@@ -1,0 +1,3 @@
+#!/bin/sh
+# Starts the Calamares installer as root (live user has passwordless sudo; no polkit agent in Xfce)
+exec sudo -E env DISPLAY="$DISPLAY" XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}" calamares "$@"

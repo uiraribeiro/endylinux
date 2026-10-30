@@ -1,0 +1,66 @@
+configuration {
+  modi: "drun";
+  show-icons: true;
+  icon-theme: "WhiteSur";
+  font: "Inter 11";
+  drun-display-format: "{name}";
+}
+
+* {
+  background-color: transparent;
+  text-color: #ffffff;
+}
+
+window {
+  fullscreen: true;
+  background-color: #0a0a1ec8;
+  padding: 7% 9%;
+}
+
+mainbox {
+  children: [inputbar, listview];
+  spacing: 48px;
+}
+
+inputbar {
+  children: [entry];
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: #ffffff22;
+  margin: 0 35%;
+}
+
+entry {
+  placeholder: "Search";
+  horizontal-align: 0.5;
+}
+
+listview {
+  columns: 5;
+  lines: 3;
+  layout: vertical;
+  fixed-columns: true;
+  spacing: 28px;
+  scrollbar: false;
+}
+
+element {
+  orientation: vertical;
+  padding: 14px 6px;
+  border-radius: 16px;
+  spacing: 8px;
+}
+
+element-icon {
+  size: 76px;
+  horizontal-align: 0.5;
+}
+
+element-text {
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+}
+
+element selected {
+  background-color: #ffffff30;
+}

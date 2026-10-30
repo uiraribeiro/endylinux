@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Rede
+Exec=sh -c "sleep 4 && exec nm-applet"
+Icon=network-wireless
+X-GNOME-Autostart-enabled=true

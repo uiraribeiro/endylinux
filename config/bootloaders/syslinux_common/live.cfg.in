@@ -1,0 +1,12 @@
+label live-@FLAVOUR@
+	menu label ^Endy Linux (@FLAVOUR@)
+	menu default
+	linux @LINUX@
+	initrd @INITRD@
+	append @APPEND_LIVE@
+
+label live-@FLAVOUR@-failsafe
+	menu label Endy Linux (@FLAVOUR@ modo seguro)
+	linux @LINUX@
+	initrd @INITRD@
+	append @APPEND_LIVE_FAILSAFE@

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Endy Agent
+Comment=AI agent that runs terminal tasks for you
+Exec=xfce4-terminal --title="Endy" -e endy
+Icon=face-smile
+Terminal=false
+Categories=System;Utility;

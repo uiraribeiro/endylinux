@@ -1,0 +1,64 @@
+configuration {
+  modi: "drun";
+  show-icons: true;
+  icon-theme: "WhiteSur";
+  font: "Inter 13";
+}
+
+* {
+  bg: #f2f2f7ee;
+  fg: #1c1c1e;
+  sel: #0a84ff;
+  background-color: transparent;
+  text-color: @fg;
+}
+
+window {
+  width: 560px;
+  location: north;
+  y-offset: 140px;
+  border-radius: 14px;
+  background-color: @bg;
+  border: 1px;
+  border-color: #00000022;
+}
+
+mainbox {
+  padding: 14px;
+  children: [inputbar, listview];
+  spacing: 10px;
+}
+
+inputbar {
+  children: [entry];
+  padding: 10px 12px;
+  border-radius: 10px;
+  background-color: #00000010;
+}
+
+listview {
+  lines: 7;
+  scrollbar: false;
+}
+
+element {
+  padding: 8px 10px;
+  border-radius: 8px;
+  spacing: 10px;
+}
+
+element selected {
+  background-color: @sel;
+  text-color: #ffffff;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element selected.normal {
+  background-color: @sel;
+  text-color: #ffffff;
+}

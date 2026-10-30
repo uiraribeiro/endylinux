@@ -1,6 +1,5 @@
 # Endy Linux
-
-<p align="center"><img src="endylinux.png" alt="Endy Linux" width="720"></p>
+<p align="center"><img src="docs/endylinux.png" alt="Endy Linux" width="720"></p>
 
 A lightweight, macOS-styled Linux distribution that gives old MacBooks a second life.
 
@@ -28,7 +27,7 @@ MacBook Air with a Broadcom BCM43224 Wi-Fi chip, 64-bit EFI and a US keyboard.
 
 ## Download
 
-The prebuilt ISO is at `[MacBookOS-amd64.iso](https://github.com/uiraribeiro/endylinux/releases/tag/1.21)`, with its checksum in `output/MacBookOS-amd64.iso.sha256`.
+Download the prebuilt ISO (`MacBookOS-amd64.iso`) from the [Releases page](https://github.com/uiraribeiro/endylinux/releases/tag/1.21), together with its checksum file (`MacBookOS-amd64.iso.sha256`).
 
 ```bash
 shasum -a 256 -c MacBookOS-amd64.iso.sha256

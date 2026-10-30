@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Endy Wallpaper
+Exec=/usr/local/bin/endy-wallpaper
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+"""endy-face setup | remove   (face unlock for the login screen)"""
+import io
+import subprocess
+import sys
+
+sys.path.insert(0, "/usr/lib/endy-face")
+import numpy as np
+import face
+
+STORE = ["pkexec", "/usr/lib/endy-face/store.py"]
+
+
+def pause(msg="Pressione Enter para fechar..."):
+    try:
+        input(msg)
+    except EOFError:
+        pass
+
+
+def setup():
+    print("Reconhecimento facial - cadastro\n")
+    print("Fique de frente para a camera, em um lugar bem iluminado.")
+    print("Vire o rosto levemente durante a captura. Sera pedida a sua senha para salvar.\n")
+    input("Pressione Enter para comecar...")
+    templates = face.capture_templates(count=8, seconds=25.0)
+    if len(templates) < 5:
+        print("\nNao consegui ver o seu rosto o suficiente (%d capturas). Tente com mais luz." % len(templates))
+        return pause()
+    buf = io.BytesIO()
+    np.save(buf, templates)
+    r = subprocess.run(STORE + ["save"], input=buf.getvalue())
+    print("\nPronto! Na tela de login, o rosto sera tentado primeiro; a senha continua funcionando."
+          if r.returncode == 0 else "\nNao foi possivel salvar (senha incorreta ou cancelado).")
+    print("Aviso: uma foto sua pode enganar a camera. Nao use isto como protecao forte.")
+    pause()
+
+
+def remove():
+    r = subprocess.run(STORE + ["remove"])
+    pause("Rosto removido." if r.returncode == 0 else "Nao foi possivel remover.")
+
+
+{"setup": setup, "remove": remove}.get(sys.argv[1] if len(sys.argv) > 1 else "setup", setup)()

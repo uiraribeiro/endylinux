@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfce4-keyboard-shortcuts" version="1.0">
+  <!-- Command is mapped to Ctrl (altwin:ctrl_win), so "Cmd+X" below is <Primary>x.
+       Command shortcuts only fire with override=true, which drops Xfce's stock *command* shortcuts,
+       so the useful ones are listed again here. Window-manager shortcuts (Alt+Tab, Alt+F4...) are a
+       separate channel section, deliberately NOT overridden. -->
+  <property name="commands" type="empty">
+    <property name="custom" type="empty">
+      <property name="override" type="bool" value="true"/>
+      <!-- Mac -->
+      <property name="&lt;Primary&gt;space" type="string" value="rofi -show drun"/>
+      <property name="&lt;Primary&gt;q" type="string" value="/usr/local/bin/endy-quit"/>
+      <property name="&lt;Shift&gt;&lt;Primary&gt;q" type="string" value="xfce4-session-logout"/>
+      <property name="&lt;Shift&gt;&lt;Primary&gt;3" type="string" value="xfce4-screenshooter -f"/>
+      <property name="&lt;Shift&gt;&lt;Primary&gt;4" type="string" value="xfce4-screenshooter -r"/>
+      <property name="&lt;Shift&gt;&lt;Primary&gt;5" type="string" value="xfce4-screenshooter"/>
+      <property name="&lt;Alt&gt;&lt;Primary&gt;Escape" type="string" value="xfce4-taskmanager"/>
+      <!-- Xfce stock ones worth keeping -->
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
+      <property name="&lt;Alt&gt;F2" type="string" value="rofi -show run"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
+      <property name="Print" type="string" value="xfce4-screenshooter"/>
+    </property>
+  </property>
+</channel>

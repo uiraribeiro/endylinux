@@ -1,0 +1,23 @@
+#!/bin/bash
+# Needs network at build time. Installs WhiteSur GTK/icons/cursors system-wide.
+set -e
+# WhiteSur installers need a TERM and a logname (absent in the build chroot)
+export TERM=xterm
+printf '#!/bin/sh\necho root\n' > /usr/local/bin/logname; chmod +x /usr/local/bin/logname
+cd /tmp
+# GitHub clones can drop mid-transfer: retry, and never hang on a stalled connection
+clone() {
+  for i in 1 2 3 4 5; do
+    rm -rf "$(basename "$1" .git)"
+    git -c http.version=HTTP/1.1 -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=60 clone --depth 1 "$1" && return 0
+    echo "clone failed ($i/5), retrying..."; sleep 10
+  done
+  return 1
+}
+clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+clone https://github.com/vinceliuice/WhiteSur-cursors.git
+(cd WhiteSur-gtk-theme   && ./install.sh -d /usr/share/themes -c Light -c Dark -t default --round)
+(cd WhiteSur-icon-theme  && ./install.sh -d /usr/share/icons)
+(cd WhiteSur-cursors     && ./install.sh)
+rm -rf /tmp/WhiteSur-* /usr/local/bin/logname

@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+"""Launchpad: full-screen app grid (rofi). Lists apps only; settings panels stay in Settings/Spotlight."""
+import configparser, glob, os, subprocess, sys
+
+KEEP_SETTINGS = ("xfce-settings-manager.desktop", "nm-connection-editor.desktop",
+                 "blueman-manager.desktop", "pavucontrol.desktop")
+lang = os.environ.get("LANG", "en_US")[:5]            # e.g. pt_BR
+
+apps = []
+for path in sorted(glob.glob("/usr/share/applications/*.desktop")):
+    cp = configparser.RawConfigParser(strict=False, interpolation=None)
+    cp.optionxform = str
+    try:
+        cp.read(path, encoding="utf-8")
+        d = cp["Desktop Entry"]
+    except Exception:
+        continue
+    if d.get("Type") != "Application" or d.get("NoDisplay", "").lower() == "true" \
+            or d.get("Hidden", "").lower() == "true":
+        continue
+    cats = d.get("Categories", "")
+    if ("Settings" in cats or "X-XFCE-SettingsDialog" in cats) and not path.endswith(KEEP_SETTINGS):
+        continue
+    name = d.get("Name[%s]" % lang) or d.get("Name")
+    if name:
+        apps.append((name, d.get("Icon", "application-x-executable"), path))
+
+apps.sort(key=lambda a: a[0].lower())
+if "--print" in sys.argv:
+    print("\n".join(a[0] for a in apps)); sys.exit(0)
+
+rows = "\n".join("%s\0icon\x1f%s" % (n, i) for n, i, _ in apps)
+res = subprocess.run(["rofi", "-dmenu", "-i", "-show-icons", "-format", "i", "-p", "",
+                      "-theme", "/etc/endy/launchpad.rasi"], input=rows, text=True, capture_output=True)
+if res.returncode == 0 and res.stdout.strip().isdigit():
+    subprocess.Popen(["gio", "launch", apps[int(res.stdout)][2]], start_new_session=True)

@@ -1,0 +1,9 @@
+/* Top bar: dark text on the light translucent bar (white text was unreadable) */
+.xfce4-panel,
+.xfce4-panel label,
+.xfce4-panel button,
+.xfce4-panel menubar > menuitem {
+  color: #1c1c1e;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
