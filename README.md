@@ -10,7 +10,7 @@ Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Pl
 ## Highlights
 
 - macOS look and feel: WhiteSur theme, Plank dock, Spotlight (rofi), launchpad (`endy-launchpad`).
-- Light enough for old MacBooks (Xfce, PipeWire, `zram-tools`, `tlp`, `thermald`, `mbpfan`).
+- Light enough for old MacBooks: about 955 MB of RAM in use on an idle desktop (Xfce, PipeWire, `zram-tools`, `tlp`, `thermald`, `mbpfan`).
 - Working Broadcom Wi-Fi (`firmware-b43-installer`, `wpasupplicant`).
 - Boots on BIOS and **64-bit EFI**, with workarounds for Apple firmware.
 - Graphical **Calamares** installer, defaulting to the `America/Sao_Paulo` time zone.
@@ -23,7 +23,9 @@ Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Pl
 
 ## Test hardware
 
-MacBook Air with a Broadcom BCM43224 Wi-Fi chip, 64-bit EFI and a US keyboard.
+MacBook Air with an Intel Core i7, 8 GB of RAM, a Broadcom BCM43224 Wi-Fi chip, 64-bit EFI and a US keyboard.
+
+Endy Linux already runs on it, using only about **955 MB of RAM** on an idle desktop.
 
 ## Download
 
