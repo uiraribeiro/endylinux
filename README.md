@@ -28,7 +28,7 @@ MacBook Air with a Broadcom BCM43224 Wi-Fi chip, 64-bit EFI and a US keyboard.
 
 ## Download
 
-The prebuilt ISO is at `output/MacBookOS-amd64.iso`, with its checksum in `output/MacBookOS-amd64.iso.sha256`.
+The prebuilt ISO is at `[MacBookOS-amd64.iso](https://github.com/uiraribeiro/endylinux/releases/tag/1.21)`, with its checksum in `output/MacBookOS-amd64.iso.sha256`.
 
 ```bash
 shasum -a 256 -c MacBookOS-amd64.iso.sha256
