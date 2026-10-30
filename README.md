@@ -1,5 +1,7 @@
 # Endy Linux
 
+<p align="center"><img src="endylinux.png" alt="Endy Linux" width="720"></p>
+
 A lightweight, macOS-styled Linux distribution that gives old MacBooks a second life.
 
 Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Plank** dock + a **rofi** Spotlight-style launcher. It produces a live and installable ISO (via Calamares), built with **live-build** inside Docker.
