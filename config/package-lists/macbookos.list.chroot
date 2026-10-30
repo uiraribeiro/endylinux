@@ -30,7 +30,7 @@ timeshift
 # Printing
 cups system-config-printer cups-pk-helper printer-driver-gutenprint printer-driver-hpcups printer-driver-brlaser printer-driver-splix
 # Face unlock (login screen only)
-python3-opencv python3-numpy libpam-python policykit-1 v4l-utils
+python3-opencv python3-numpy libpam-python policykit-1 policykit-1-gnome v4l-utils
 # Wi-Fi: NetworkManager only *recommends* it; without it every Wi-Fi device shows "unavailable"
 wpasupplicant
 # Command-key shortcuts (Mac style)
