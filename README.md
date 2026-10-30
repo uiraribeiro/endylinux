@@ -27,10 +27,11 @@ MacBook Air with a Broadcom BCM43224 Wi-Fi chip, 64-bit EFI and a US keyboard.
 
 ## Download
 
-Download the prebuilt ISO (`MacBookOS-amd64.iso`) from the [Releases page](https://github.com/uiraribeiro/endylinux/releases/tag/1.21), together with its checksum file (`MacBookOS-amd64.iso.sha256`).
+Download the prebuilt ISO from the [Releases page](https://github.com/uiraribeiro/endylinux/releases/tag/1.22). It is shipped compressed with xz (GitHub limits release assets to under 2 GiB), so decompress it and verify the checksum:
 
 ```bash
-shasum -a 256 -c MacBookOS-amd64.iso.sha256
+xz -d MacBookOS-amd64.iso.xz
+shasum -a 256 MacBookOS-amd64.iso   # compare with the value in the release notes
 ```
 
 ## Write to a USB stick
