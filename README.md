@@ -112,10 +112,6 @@ Notes:
 - **Xfce wallpaper** is stored per monitor name; `endy-wallpaper` applies it to every output.
 - **Xfce shortcuts** only fire with `override=true`; Cmd = Ctrl via `altwin:ctrl_win`.
 
-## Not yet verified on real hardware
-
-Wi-Fi tray icon, battery %, touchpad/audio/Bluetooth, face unlock with a real camera, Craft apps rendering (needs GL/Vulkan), installer steps after the file copy (user, GRUB, first boot) and the `endy` wrapper.
-
 ## License
 
 This project is licensed under the **GNU General Public License v3.0**. See [LICENSE](LICENSE).
