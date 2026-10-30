@@ -17,7 +17,7 @@ Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Pl
 - English (US) by default, with pt-BR locale and language packs (Firefox, Thunderbird, hunspell) available.
 - Media codecs, VLC, mpv, Flatpak + GNOME Software, Thunderbird.
 - Optional **face unlock** with OpenCV (`endy-face setup`).
-- **Endy**: a terminal AI agent (`endy`) that installs Claude Code on first run (needs internet and a login or `ANTHROPIC_API_KEY`).
+- **Endy**: a terminal AI agent (`endy`) that installs Claude Code on first run (needs internet and a login or `ANTHROPIC_API_KEY`). It checks that the binary actually runs and reinstalls it if a download was truncated.
 - Craft apps: WordCraft, DeckCraft, GridCraft and PDFCraft (`.deb` packages, sha256-verified).
 - Clock synced with `chrony` (a.ntp.br), since the RTC on Macs is often wrong.
 
@@ -45,8 +45,8 @@ Or use balenaEtcher. On the Mac, hold **Option (⌥)** at startup and pick the *
 
 ## Installing
 
-1. Boot from the USB stick and open the installer from the **Install** shortcut (it runs `endy-install`).
-2. In Calamares, pick the **English (US)** keyboard (the default is Portuguese, Brazil).
+1. Boot from the USB stick and open the installer from the **Install Endy Linux** dock icon (it runs `endy-install`).
+2. The live system boots in English (US). In Calamares, confirm that the keyboard is **English (US)**, and pick your language and time zone.
 3. **Warning:** Calamares **erases the disk** when you click "Install". Back up your data first.
 
 ## Building the ISO
@@ -103,6 +103,7 @@ Notes:
 - **No Wi-Fi**: `wpasupplicant` was missing (NetworkManager only recommends it).
 - **Battery tray icon**: needs `xfce4-power-manager-plugins`.
 - **Installer**: needs `squashfs-tools rsync dosfstools parted gdisk e2fsprogs efibootmgr grub-efi-amd64 grub-pc-bin` in the live image.
+- **Installer launcher name**: it must not be `calamares.desktop`. `calamares-settings-debian` diverts that path with `dpkg-divert`, so its removal at the end of the install failed (apt error 100). That aborted the remaining Calamares steps, leaving the `/run/live/medium` apt source behind and no final `sources.list`. The launcher is `endy-install.desktop`.
 - **`pkexec` silently does nothing in Xfce** (no polkit agent), so `endy-install` uses `sudo -E`.
 - **Apple EFI**: GRUB's graphical terminal (gfxterm) garbles the screen; on EFI, `config.cfg` forces `terminal_output console`, and Calamares sets `installEFIFallback: true`.
 - **Xfce wallpaper** is stored per monitor name; `endy-wallpaper` applies it to every output.
