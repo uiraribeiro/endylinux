@@ -14,11 +14,11 @@ Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Pl
 - Working Broadcom Wi-Fi (`firmware-b43-installer`, `wpasupplicant`).
 - Boots on BIOS and **64-bit EFI**, with workarounds for Apple firmware.
 - Graphical **Calamares** installer, defaulting to the `America/Sao_Paulo` time zone.
-- pt-BR locale and apps (locales, Firefox, hunspell).
-- Media codecs, VLC, mpv, Flatpak + GNOME Software, Geary.
+- English (US) by default, with pt-BR locale and language packs (Firefox, Thunderbird, hunspell) available.
+- Media codecs, VLC, mpv, Flatpak + GNOME Software, Thunderbird.
 - Optional **face unlock** with OpenCV (`endy-face setup`).
 - **Endy**: a terminal AI agent (`endy`) that installs Claude Code on first run (needs internet and a login or `ANTHROPIC_API_KEY`).
-- Craft apps: WordCraft, DeckCraft and GridCraft (`.deb` packages, sha256-verified).
+- Craft apps: WordCraft, DeckCraft, GridCraft and PDFCraft (`.deb` packages, sha256-verified).
 - Clock synced with `chrony` (a.ntp.br), since the RTC on Macs is often wrong.
 
 ## Test hardware

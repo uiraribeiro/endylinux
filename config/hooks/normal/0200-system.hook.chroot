@@ -14,7 +14,7 @@ for f in /usr/share/backgrounds/xfce/*; do [ -f "$f" ] && cp /usr/share/backgrou
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
 # GNOME Software background service eats RAM on a 4 GB machine; it still opens on demand
 rm -f /etc/xdg/autostart/gnome-software-service.desktop
-# Locales: pt-BR default (chosen at boot via locales=), en_US kept as fallback
+# Locales: en_US default (chosen at boot via locales=), pt_BR kept as an option
 sed -i 's/^# *\(pt_BR.UTF-8\|en_US.UTF-8\) UTF-8/\1 UTF-8/' /etc/locale.gen
 locale-gen
 systemctl enable cups.service || true

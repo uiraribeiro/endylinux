@@ -18,7 +18,7 @@ calamares calamares-settings-debian squashfs-tools rsync dosfstools parted e2fsp
 # Misc
 user-setup nodejs npm sudo chrony libxml2-utils curl git wget imagemagick plymouth plymouth-themes
 # Store + mail
-gnome-software gnome-software-plugin-flatpak flatpak geary
+gnome-software gnome-software-plugin-flatpak flatpak thunderbird thunderbird-l10n-pt-br
 # pt-BR
 locales firefox-esr-l10n-pt-br hunspell-pt-br
 # Media + codecs

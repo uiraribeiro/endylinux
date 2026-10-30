@@ -10,7 +10,7 @@ lb config \
   --debian-installer none \
   --binary-images iso-hybrid \
   --bootloaders "syslinux,grub-efi" \
-  --bootappend-live "boot=live components quiet splash username=macbook hostname=macbookos locales=pt_BR.UTF-8 keyboard-layouts=us keyboard-variants=intl keyboard-options=altwin:ctrl_win timezone=America/Sao_Paulo" \
+  --bootappend-live "boot=live components quiet splash username=macbook hostname=macbookos locales=en_US.UTF-8 keyboard-layouts=us keyboard-variants=intl keyboard-options=altwin:ctrl_win timezone=America/Sao_Paulo" \
   --zsync false --iso-application "MacBookOS" --iso-volume "MacBookOS" \
   --apt-recommends false --firmware-chroot true \
   --compression xz --memtest none --win32-loader false \

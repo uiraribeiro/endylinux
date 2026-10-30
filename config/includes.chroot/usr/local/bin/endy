@@ -3,8 +3,11 @@
 # First run installs Claude Code to ~/.local (needs internet) and asks you to log in / set ANTHROPIC_API_KEY.
 set -e
 export PATH="$HOME/.local/bin:$PATH"
-if ! command -v claude >/dev/null; then
-  echo "Primeira execução: instalando o agente (precisa de internet)..."
+# A truncated download leaves a binary that dies with "Bus error", so check that it actually runs.
+if ! claude --version >/dev/null 2>&1; then
+  echo "Instalando o agente (precisa de internet)..."
+  rm -rf "$HOME/.local/lib/node_modules/@anthropic-ai/claude-code" "$HOME/.local/bin/claude"
   npm install -g --prefix "$HOME/.local" @anthropic-ai/claude-code
+  claude --version >/dev/null 2>&1 || { echo "Falha ao instalar o agente. Verifique a internet e tente de novo." >&2; exit 1; }
 fi
 exec claude --mcp-config /etc/endy/mcp.json "$@"

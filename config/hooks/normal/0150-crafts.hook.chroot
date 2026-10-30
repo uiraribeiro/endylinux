@@ -1,5 +1,5 @@
 #!/bin/bash
-# WordCraft / DeckCraft / GridCraft (storytold, Apache-2.0): official x86_64 .deb from GitHub releases,
+# WordCraft / DeckCraft / GridCraft / PDFCraft (storytold, Apache-2.0): official x86_64 .deb from GitHub releases,
 # verified against each release's SHA256SUMS.txt before installing.
 set -e
 export DEBIAN_FRONTEND=noninteractive
@@ -11,7 +11,7 @@ fetch() {  # url dest
   done
   return 1
 }
-for spec in "wordcraft v0.12.0 0.12.0" "deckcraft v0.12.0 0.12.0" "gridcraft v0.13.0 0.13.0"; do
+for spec in "wordcraft v0.12.0 0.12.0" "deckcraft v0.12.0 0.12.0" "gridcraft v0.13.0 0.13.0" "pdfcraft v0.15.0 0.15.0"; do
   set -- $spec
   base="https://github.com/storytold/$1/releases/download/$2"
   deb="$1-$3-linux-x86_64.deb"
