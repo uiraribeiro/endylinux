@@ -5,7 +5,7 @@ A lightweight, macOS-styled Linux distribution that gives old MacBooks a second 
 
 Built on **Debian 12 (bookworm)** + **Xfce** + the **WhiteSur** theme + the **Plank** dock + a **rofi** Spotlight-style launcher. It produces a live and installable ISO (via Calamares), built with **live-build** inside Docker.
 
-> Repository name: `macbookos`. ISO name: `MacBookOS-amd64.iso`.
+> Repository name: `macbookos`. ISO names: `MacBookOS-amd64.iso` (Intel Macs) and `MacBookOS-arm64.iso` (Apple Silicon VMs).
 
 ## Highlights
 
@@ -36,6 +36,14 @@ xz -d MacBookOS-amd64.iso.xz
 shasum -a 256 MacBookOS-amd64.iso   # compare with the value in the release notes
 ```
 
+## Apple Silicon (M1/M2/M3) version
+
+There is also an **arm64** build (`MacBookOS-arm64.iso`) for running Endy Linux as a **virtual machine** on Apple Silicon Macs (UTM, Parallels; UEFI only). It runs natively, with no emulation.
+
+- It is **not bootable on bare-metal M1/M2/M3**: that would need Asahi Linux support.
+- Boot, the Calamares install and the Crafts aarch64 `.deb` packages are still untested on this build.
+- Build it with `ARCH=arm64 ./build.sh` (see below).
+
 ## Write to a USB stick
 
 ```bash
@@ -54,13 +62,14 @@ Or use balenaEtcher. On the Mac, hold **Option (⌥)** at startup and pick the *
 
 ## Building the ISO
 
-Requirements: Docker. Works on Apple Silicon through amd64 emulation.
+Requirements: Docker. By default the amd64 ISO is built, which works on Apple Silicon through amd64 emulation.
 
 ```bash
-./build.sh
+./build.sh                # amd64 -> output/MacBookOS-amd64.iso
+ARCH=arm64 ./build.sh     # arm64 (VMs on Apple Silicon) -> output/MacBookOS-arm64.iso
 ```
 
-The script builds an image from `builder/Dockerfile`, runs a privileged container and produces `output/MacBookOS-amd64.iso` (+ `.sha256`).
+The script builds an image from `builder/Dockerfile`, runs a privileged container and produces the ISO (+ `.sha256`) in `output/`. Each architecture has its own cache volume (`macbookos-lbcache` and `macbookos-lbcache-arm64`), but they share the `macbookos-builder` image tag, so switching architecture rebuilds the image.
 
 - A cold build takes hours. With the `macbookos-lbcache` Docker volume (bootstrap + package cache) it takes about 40 minutes.
 - `builder/build-iso.sh` copies `/src/config` at startup, so config edits made mid-build are **not** picked up. Restart the build.
