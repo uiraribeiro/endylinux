@@ -11,10 +11,10 @@ mpv gparted gnome-disk-utility file-roller
 pipewire pipewire-pulse wireplumber pipewire-alsa pavucontrol bluez
 # Hardware / power
 xserver-xorg-video-nouveau xserver-xorg-input-libinput libgl1-mesa-dri mesa-vulkan-drivers
-firmware-b43-installer b43-fwcutter firmware-linux-free firmware-misc-nonfree
-tlp mbpfan zram-tools thermald
+firmware-linux-free firmware-misc-nonfree
+tlp zram-tools
 # Installer
-calamares calamares-settings-debian squashfs-tools rsync dosfstools parted e2fsprogs gdisk efibootmgr grub-efi-amd64 grub-pc-bin
+calamares calamares-settings-debian squashfs-tools rsync dosfstools parted e2fsprogs gdisk efibootmgr
 # Misc
 user-setup nodejs npm sudo chrony libxml2-utils curl git wget imagemagick plymouth plymouth-themes
 # Store + mail

@@ -1,0 +1,2 @@
+# build-iso.sh drops this file on other architectures
+grub-efi-arm64 grub-efi-arm64-bin
